@@ -1,0 +1,29 @@
+=== Installation du Pack GTK+ 2.10.12 ===
+
+Ce Pack contient:
+
+- GTK+ 2.10.12
+- GLib 2.13.1
+- ATK 1.19.1
+
+- Cairo 1.2.6
+- Pango 1.16.4
+- Gettext 0.14.5
+- Libiconv 1.9.1
+- Libpng 1.2.8
+- Tiff 3.7.4
+- Zlib123 dll
+
+------------------------------------------
+
+    Tutorial d'Installation GTK+ sur :
+
+            www.siteduzero.com
+
+------------------------------------------
+
+                www.gtk.org
+
+------------------------------------------
+
+-------------=== by Im@GinE ===----------g

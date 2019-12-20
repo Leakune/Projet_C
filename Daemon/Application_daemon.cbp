@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Application_daemon" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Application_daemon" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-mms-bitfields" />
+					<Add directory="../Pack GTK+/include" />
+					<Add directory="../Pack GTK+/include/atk" />
+					<Add directory="../Pack GTK+/include/cairo" />
+					<Add directory="../Pack GTK+/include/cairo/src" />
+					<Add directory="../Pack GTK+/include/glib" />
+					<Add directory="../Pack GTK+/include/glib/build" />
+					<Add directory="../Pack GTK+/include/glib/glib" />
+					<Add directory="../Pack GTK+/include/glib/gmodule" />
+					<Add directory="../Pack GTK+/include/glib/gobject" />
+					<Add directory="../Pack GTK+/include/glib/gthread" />
+					<Add directory="../Pack GTK+/include/gtk+" />
+					<Add directory="../Pack GTK+/include/gtk+/contrib" />
+					<Add directory="../Pack GTK+/include/gtk+/gtk" />
+					<Add directory="../Pack GTK+/include/gtk+/gdk" />
+					<Add directory="../Pack GTK+/include/gtk+/gdk-pixbuf" />
+					<Add directory="../Pack GTK+/include/gtk+/modules" />
+					<Add directory="../Pack GTK+/include/libpng" />
+					<Add directory="../Pack GTK+/include/libpng/contrib" />
+					<Add directory="../Pack GTK+/include/pango" />
+					<Add directory="../Pack GTK+/include/pango/modules" />
+					<Add directory="../Pack GTK+/include/pango/pango" />
+					<Add directory="../Pack GTK+/include/tiff" />
+					<Add directory="../Pack GTK+/include/tiff/libtiff" />
+					<Add directory="../Pack GTK+/lib/glib/include" />
+					<Add directory="../Pack GTK+/lib/gtk+/include" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="../Pack GTK+/bin" />
+				</ResourceCompiler>
+				<Linker>
+					<Add library="glib-2.0" />
+					<Add library="pangocairo-1.0" />
+					<Add library="pangowin32-1.0" />
+					<Add library="atk-1.0" />
+					<Add library="gdk_pixbuf-2.0" />
+					<Add library="gdk-win32-2.0" />
+					<Add library="pango-1.0" />
+					<Add library="gmodule-2.0" />
+					<Add library="gobject-2.0" />
+					<Add library="gthread-2.0" />
+					<Add library="gtk-win32-2.0" />
+					<Add library="cairo" />
+					<Add directory="../Pack GTK+/lib" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Application_daemon" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Linker>
+			<Add library="gdi32" />
+			<Add library="user32" />
+			<Add library="kernel32" />
+			<Add library="comctl32" />
+		</Linker>
+		<Unit filename="GTK.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="GTK.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

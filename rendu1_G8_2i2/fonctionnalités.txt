@@ -1,0 +1,25 @@
+
+Descriptif:
+Un programme prend en options les applications déjà existantes dans le système d’exploitation de l’utilisateur. 
+Ce programme va ensuite tourner en arrière-plan pour détecter s’il y a dans les applications des mises à jour faire.
+Il devrait donc y avoir 2 programmes :
+•	1 programme qui affiche une fenêtre avec la bibliothèque GTK+ qui décrit l’état de la recherche des mises à jour. On affiche dans cette fenêtre :
+-« Mises à jour non trouvables » quand on ne détecte pas de nouvelles mises à jours à télécharger.
+- une liste montrant les nouvelles versions à télécharger pour telle application
+•	1 autre qui aura comme rôle d’un service (=daemon mais sous Windows) qui tournera en arrière-plan pour rechercher des mises à jour des applications
+
+Pour rechercher les éventuelles nouvelles versions d'une application, on pourrait chercher une bibliothèque qui permet d'aller fouiller dans le site internet et de trouver le nom
+de la nouvelle version de l'application. Donc le programme service par intervalles de temps devra comparer entre la version actuelle de l'application et celle du site internet où 
+l'utilisateur avait téléchargé l'application pour l'installer dans son système d'exploitation.
+
+Pour la base de données il n'y aurait qu'une seule table correspondant à la liste des applications qu'on veut trouver éventuellement leur nouvelle version.
+
+
+Donc pour notre projet on devrait utiliser 5 bibliothèques:
+
+	1 qui permet de faire un service (daemon sous windows)
+	1 pour gérer l'interface graphique (GTK+)
+	1 bibliothèque pour chercher les nouvelles versions des applications chez leur site internet
+	1 bibliothèque pour déterminer les versions actuelles des applications qu'a l'utilisateur dans son système
+	1 biliothèque SGBD qui permet de relier nos 2 programmes à une base de données
+

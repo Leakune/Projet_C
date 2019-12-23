@@ -11,7 +11,7 @@
 
 int main(int argc, char **argv)
 {
-    MYSQL *connection = my_MySQL(); //appel de fonction pour se conencter à MySQL
+    MYSQL *connection = my_MySQL(); //appel de fonction pour se connecter à MySQL
 
     myGTK(argc, argv);   //appel de la fonction pour créer une fenêtre
 

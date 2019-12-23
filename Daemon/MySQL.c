@@ -41,5 +41,5 @@ MYSQL * my_MySQL()
         exit(1);
     }
     printf("Connection successful");
-
+    return connection;
 }

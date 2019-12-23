@@ -12,7 +12,7 @@ void myGTK(int argc, char **argv)
 {
     // Variables
     GtkWidget *MainWindow = NULL; //déclaration d'un pointeur sur GtkWidget, correspondra à notre fenêtre
-    const gchar *title;           //déclaration d'une char en Glib, correspondra au titre de notre fenêtre
+    const gchar *title = "Daemon";           //déclaration d'une char en Glib, correspondra au titre de notre fenêtre
     gint width;             //déclaration de int en Glib, correspondra à la largeur de la fenêtre
     gint height;            //correspondra à la hauteur de la fenêtre
     gint x;         //correspondra à la position x de la fenêtre
@@ -29,7 +29,7 @@ void myGTK(int argc, char **argv)
 
 
     //Edition de la fenêtre
-    gtk_window_set_title(GTK_WINDOW(MainWindow), "Daemon!");                //on écrit le titre de la fenêtre
+    gtk_window_set_title(GTK_WINDOW(MainWindow), title);                //on écrit le titre de la fenêtre
     gtk_window_set_default_size(GTK_WINDOW(MainWindow), 300, 350);      //on configure la taille de la fenêtre par défaut
     gtk_window_set_position(GTK_WINDOW(MainWindow), GTK_WIN_POS_CENTER); //position au centre de l'écran
 

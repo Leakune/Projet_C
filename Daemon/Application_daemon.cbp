@@ -60,6 +60,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="MySQL.h" />
+		<Unit filename="find_app.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="find_app.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

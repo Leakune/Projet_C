@@ -4,17 +4,7 @@
 	<ActiveTarget name="Debug" />
 	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="285" topLine="3" />
-		</Cursor>
-	</File>
-	<File name="find_app.c" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1955" topLine="48" />
-		</Cursor>
-	</File>
-	<File name="find_app.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="14" topLine="0" />
+			<Cursor1 position="688" topLine="8" />
 		</Cursor>
 	</File>
 	<File name="MySQL.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -35,6 +25,16 @@
 	<File name="MySQL.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="20" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="find_app.c" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="601" topLine="13" />
+		</Cursor>
+	</File>
+	<File name="find_app.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

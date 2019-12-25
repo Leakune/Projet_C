@@ -9,21 +9,22 @@
 #include <string.h>
 #include "find_app.h"
 
-void find_app(char *path_app)
+#define MAX_VERSION 20
+
+char * find_app(char *path_app)
 {
     long size;  //taille de l'application
     char *array;
     char *product_version = "ProductVersion";
     char found = 0;
-    char found2;
     int i;
-    char version_app [20];
+    char * version_app;
 
     FILE *pf = fopen(path_app, "rb");
-    if(pf == NULL)
+    if(pf == NULL) {
         printf("\nError: file not found\n");
-    else{
-    printf("\nFile found!\n %s\n", path_app);
+        return NULL;
+    }
     fseek(pf, 0, SEEK_END);
     size = ftell(pf);
     array = malloc(sizeof(char) * size);
@@ -32,7 +33,7 @@ void find_app(char *path_app)
     fclose(pf);
 
     for(i = 0; i < size - 2 * strlen(product_version); i++) {
-        found2 = 1;
+        char found2 = 1;
         for(int j = 0; j < strlen(product_version); j++){
             if (array[i+2*j] != product_version[j] || array[i+2*j+1] != 0) {
                 found2 = 0;
@@ -44,6 +45,12 @@ void find_app(char *path_app)
                 break;
             }
     }
+    if(!found) {
+        printf("\nError: version not found\n");
+        free(array);
+        return NULL;
+    }
+    version_app = malloc((sizeof(char)) * (MAX_VERSION + 1));
     i = i + 2 * strlen(product_version);
     int k = 0;
     while(array[i] == '\0' || array[i] == '.' || array[i] == '0' || array[i] == '1' || array[i] == '2'
@@ -61,13 +68,18 @@ void find_app(char *path_app)
                 i++;
                 k++;
             }
+            if (k > MAX_VERSION) {
+                printf("\nError: version too long\n");
+                free(array);
+                free(version_app);
+                return NULL;
+            }
           }
     k = 0;
     while(version_app[k] == '.' || (version_app[k] >= '0' && version_app[k] <= '9')){
         k++;
     }
     version_app[k] = '\0';
-    printf("The version: %s", version_app);
     free(array);
-    }
+    return version_app;
 }

@@ -53,9 +53,7 @@ char * find_app(char *path_app)
     version_app = malloc((sizeof(char)) * (MAX_VERSION + 1));
     i = i + 2 * strlen(product_version);
     int k = 0;
-    while(array[i] == '\0' || array[i] == '.' || array[i] == '0' || array[i] == '1' || array[i] == '2'
-          || array[i] == '3' || array[i] == '4' || array[i] == '5' || array[i] == '6' || array[i] == '7'
-          || array[i] == '8' || array[i] == '9'){
+    while(array[i] == '\0' || array[i] == '.' || (array[i] >= '0' && array[i] <= '9')){
             if (array[i] == '\0')
                 i++;
             else if (array[i] == '.'){

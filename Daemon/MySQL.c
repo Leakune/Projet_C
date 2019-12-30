@@ -1,5 +1,5 @@
 /*
-** api pour se connecter à MySQL
+** api lié à MySQL
 ** Fait par Ludovic & Gabriel
 ** 26/11/2019
 */
@@ -42,4 +42,60 @@ MYSQL * my_MySQL()
     }
     printf("Connection successful");
     return connection;
+}
+
+void display_app_MySQL(MYSQL *connection)
+{
+    mysql_query(connection, "SELECT nom, nom_exec, chemin, version_actuel FROM liste_application"); //on sélectionne toutes les application existantes dans la base de données
+    MYSQL_RES *result = mysql_use_result(connection); //on enregistre les résultats de la précédente requette SQL dans un pointeur de structure
+                                                      //de type MYSQL_RES
+
+    int nb_columns = mysql_num_fields(result); //on stock le nombre de colonnes sélectionnées de la table liste_application d'après la requette
+    MYSQL_ROW row; //contiendra une ligne de la table
+    while((row = mysql_fetch_row(result)) != NULL) //on récupère les lignes trouvées tant que la requette en trouve
+    {
+        unsigned long *lengths = mysql_fetch_lengths(result); //on récupère la taille de la valeur d'une des colonnes pour une ligne trouvée
+         for(int i = 0; i < nb_columns; i++){
+            printf("[%.*s]", (int) lengths[i], row[i] ? row[i] : "NULL"); //on affiche les champs
+         }
+         printf("\n");
+    }
+
+    mysql_free_result(result); //on libère le jeu de résultat.
+}
+
+void add_app_MySQL (char *path_app, char *version_app, char *name, char *name_exe, MYSQL *connection)
+{
+    /*VERIFICATION SI APPLICATION DEJA CHOISIE*/
+    mysql_query(connection, "SELECT nom, nom_exec FROM liste_application");
+    MYSQL_RES *result = mysql_use_result(connection);
+
+    int nb_columns = mysql_num_fields(result);
+    MYSQL_ROW row;
+    printf("\nIci");
+    while((row = mysql_fetch_row(result)) != NULL)
+    {
+         for(int i = 0; i < nb_columns; i++){
+            if(i == 0 && strcmp(name, row[i]) == 0){
+                printf("\nError: this name is already used\n");
+                return;
+            }
+            if(i == 1 && strcmp(name_exe, row[i]) == 0){
+                printf("\nError: that software has been already chosen");
+                return;
+            }
+         }
+    }
+    mysql_free_result(result); //on libère le jeu de résultat.
+
+    /*INSERTION DES DONNEES*/
+    char query[1000]; //tableau qui va contenir la requette
+    char escaped_path_app[500];
+    unsigned long ret = mysql_real_escape_string(connection, escaped_path_app, path_app, strlen(path_app));
+    if (ret == (unsigned long)-1){
+        printf("\nError: unable to escape path app");
+        return;
+    }
+    sprintf(query, "INSERT INTO liste_application (nom, nom_exec, chemin, version_actuel) VALUES('%s', '%s', '%s', '%s')", name, name_exe, escaped_path_app, version_app);
+    mysql_query(connection, query); //insertion de données dans la base
 }

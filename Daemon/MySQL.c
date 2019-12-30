@@ -72,7 +72,6 @@ void add_app_MySQL (char *path_app, char *version_app, char *name, char *name_ex
 
     int nb_columns = mysql_num_fields(result);
     MYSQL_ROW row;
-    printf("\nIci");
     while((row = mysql_fetch_row(result)) != NULL)
     {
          for(int i = 0; i < nb_columns; i++){

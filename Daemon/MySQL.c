@@ -72,16 +72,15 @@ void add_app_MySQL (char *path_app, char *version_app, char *name, char *name_ex
 
     int nb_columns = mysql_num_fields(result);
     MYSQL_ROW row;
-    printf("\nIci");
     while((row = mysql_fetch_row(result)) != NULL)
     {
          for(int i = 0; i < nb_columns; i++){
             if(i == 0 && strcmp(name, row[i]) == 0){
-                printf("\nError: this name is already used\n");
+                printf("Error: this name is already used\n");
                 return;
             }
             if(i == 1 && strcmp(name_exe, row[i]) == 0){
-                printf("\nError: that software has been already chosen");
+                printf("Error: that software has been already chosen\n");
                 return;
             }
          }
@@ -93,9 +92,37 @@ void add_app_MySQL (char *path_app, char *version_app, char *name, char *name_ex
     char escaped_path_app[500];
     unsigned long ret = mysql_real_escape_string(connection, escaped_path_app, path_app, strlen(path_app));
     if (ret == (unsigned long)-1){
-        printf("\nError: unable to escape path app");
+        printf("Error: unable to escape path app\n");
         return;
     }
     sprintf(query, "INSERT INTO liste_application (nom, nom_exec, chemin, version_actuel) VALUES('%s', '%s', '%s', '%s')", name, name_exe, escaped_path_app, version_app);
     mysql_query(connection, query); //insertion de données dans la base
+}
+void delete_app_MySQL(char *exe_to_delete, MYSQL *connection)
+{
+    char query[500];
+    int is_there = 0;
+    /*SUPPRESSION DU LOGICIEL*/
+    mysql_query(connection, "SELECT nom_exec FROM liste_application");
+    MYSQL_RES *result = mysql_use_result(connection);
+
+    MYSQL_ROW row;
+    while((row = mysql_fetch_row(result)) != NULL)
+    {
+         if(strcmp(exe_to_delete, row[0]) == 0){
+            is_there = 1;
+            break;
+         }
+    }
+    mysql_free_result(result);
+    if (is_there == 1){
+        sprintf(query, "DELETE FROM liste_application WHERE nom_exec = '%s'", exe_to_delete);
+        printf("%s\n", query);
+        mysql_query(connection, query);
+        printf("Your software has been removed successfully!\n");
+    }
+    else{
+        printf("Error: this software is not from the list.\n");
+    }
+
 }

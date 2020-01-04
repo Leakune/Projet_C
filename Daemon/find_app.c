@@ -1,5 +1,5 @@
 /*
-** Programme pour chercher la version d'une application que détient un utilisateur dans son système
+** Programme pour récupérer la version et le fichier exécutable d'une application que détient un utilisateur dans son système
 ** Ludovic & Gabriel
 ** 24/12/2019
 */
